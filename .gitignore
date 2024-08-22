@@ -1,0 +1,11 @@
+# from dir2cast
+dir2cast.php
+getID3/
+temp/
+
+# audio files
+*.jpg
+*.m4a
+
+# keep Podcast icon image
+!image.jpg

@@ -57,6 +57,20 @@ def gen_dir2cast_ini(config) -> str:
 
     return result
 
+def copy_dir2cast(root, target):
+    '''Copy root/{dir2cast.php,getID3/} to target'''
+    for item in ['dir2cast.php', 'getID3']:
+        src = os.path.join(root, item)
+        dst = os.path.join(target, item)
+        if os.path.exists(dst):
+            logger.warning(f'{dst} already exists!')
+        else:
+            logger.info(f'Copying: {src} -> {dst}')
+            if os.path.isdir(src):
+                shutil.copytree(src, dst)
+            else:
+                shutil.copyfile(src, dst)
+
 def make_podcast(config_path, output_dir):
 
     def handle_item(title: str, value: dict):
@@ -123,6 +137,9 @@ def make_podcast(config_path, output_dir):
     with open(items_path, 'w') as f:
         yaml.dump({'items': items}, f, encoding='utf-8', allow_unicode=True)
     logger.info(f"Items with sha256 saved to: {items_path}")
+
+    logger.info("Adding dir2cast to output...")
+    copy_dir2cast('dir2cast', output_dir)
 
 if __name__ == '__main__':
     config_path = sys.argv[1]

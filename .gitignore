@@ -1,11 +1,7 @@
-# from dir2cast
-dir2cast.php
-getID3/
-temp/
+/output/
+/log
 
-# audio files
-*.jpg
-*.m4a
+bbdown-raw/
+bbdown-raw.yaml
 
-# keep Podcast icon image
-!image.jpg
+__pycache__/

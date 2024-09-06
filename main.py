@@ -90,8 +90,8 @@ def make_podcast(config_path, output_dir):
         result = subprocess.run(cmd, cwd=output_dir, capture_output=True)
         if result.returncode != 0:
             logger.error("Return code is not 0!")
-            logger.error(result.stdout)
-            logger.error(result.stderr)
+            logger.error(result.stdout.decode())
+            logger.error(result.stderr.decode())
 
         file_name = os.path.join(output_dir, f'{title}.m4a')
         assert os.path.exists(file_name), f'{file_name} not found!'

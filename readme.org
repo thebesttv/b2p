@@ -1,0 +1,9 @@
+#+title: B2P
+#+date: <2024-09-06 Fri 14:09>
+#+author: thebesttv
+
+Bilibili to Podcast
+
+其他链接
+- [[https://www.ruanyifeng.com/blog/2016/07/yaml.html][YAML 语言教程]]
+- [[https://nodeca.github.io/js-yaml/][YAML 转 Json]]

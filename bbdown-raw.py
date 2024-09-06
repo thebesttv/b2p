@@ -4,6 +4,7 @@
 读取 bbdown-raw/ 下的所有文件，生成 bbdown-raw.yaml，用于 yaml 的 items 域
 
 样例：爆炸电台
+注意，这里的 sha256 和单独生成的是不同的
     ./bbdown-raw.sh 'https://space.bilibili.com/53456/channel/collectiondetail?sid=149941'
 
 样例：陈一枝你坐下

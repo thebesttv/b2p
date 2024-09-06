@@ -126,5 +126,11 @@ def make_podcast(config_path, output_dir):
 
 if __name__ == '__main__':
     config_path = sys.argv[1]
-    output_dir = os.path.splitext(config_path)[0]
+
+    # 获取 a/b/c/xxx.yaml 中的 xxx
+    config_name = os.path.basename(config_path)
+    config_name = os.path.splitext(config_name)[0]
+
+    output_dir = os.path.join(os.getcwd(), 'output', config_name)
+
     make_podcast(config_path, output_dir)

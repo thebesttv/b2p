@@ -1,6 +1,22 @@
 #!/usr/bin/env python
 
-# 读取 bbdown-raw/ 下的所有文件，生成 bbdown-raw.yaml，用于 yaml 的 items 域
+'''
+读取 bbdown-raw/ 下的所有文件，生成 bbdown-raw.yaml，用于 yaml 的 items 域
+
+样例：爆炸电台
+    ./bbdown-raw.sh 'https://space.bilibili.com/53456/channel/collectiondetail?sid=149941'
+
+样例：陈一枝你坐下
+由于无法直接下载所有投稿，需要先生成 xxx的投稿视频.txt，再对里面的每一个视频进行下载
+    BBDown 'https://space.bilibili.com/1937416537'
+    while IFS= read -r line || [[ -n "$line" ]]; do
+    if [[ -n "$line" ]]; then
+        ./bbdown-raw.sh "$line"
+    fi
+    done < 陈一枝你坐下的投稿视频.txt
+
+下载完成后，运行此脚本，生成 bbdown-raw.yaml
+'''
 
 import os
 import yaml

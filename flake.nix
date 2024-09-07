@@ -17,14 +17,18 @@
       };
     in pkgs.mkShell {
       packages = with pkgs; [
+        # display banner
         figlet
 
+        # main.py
         python312
         python312Packages.tqdm
         python312Packages.pyyaml
 
+        # dir2cast
         php
 
+        # BBDown
         (callPackage ./bbdown.nix { ffmpeg = ffmpeg_7-headless; })
       ];
 

@@ -8,13 +8,13 @@
 
 let
   pname = "BBDown";
-  version = "1.6.2";
+  version = "1.6.3";
   dotnet-sdk = dotnetCorePackages.sdk_8_0;
   dotnet-runtime = dotnet-sdk;
   bbdown = buildDotnetGlobalTool
     {
       inherit pname version dotnet-runtime dotnet-sdk;
-      nugetSha256 = "sha256-at9YoG7neRgmL3+OrphsXumbWHt13tzKFqrK+3XXpHY=";
+      nugetSha256 = "sha256-dxsFriDIXNR8POAOFOraXBNDWI5PnxHpDpZM3JQJOzg=";
 
       meta = with lib; {
         description = "Bilibili Downloader";

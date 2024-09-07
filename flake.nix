@@ -23,11 +23,9 @@
         python312Packages.tqdm
         python312Packages.pyyaml
 
-        ffmpeg_7-headless
-
         php
 
-        (callPackage ./bbdown.nix { })
+        (callPackage ./bbdown.nix { ffmpeg = ffmpeg_7-headless; })
       ];
 
       shellHook = ''

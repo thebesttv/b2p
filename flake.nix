@@ -26,6 +26,8 @@
         ffmpeg_7-headless
 
         php
+
+        (callPackage ./bbdown.nix { })
       ];
 
       shellHook = ''

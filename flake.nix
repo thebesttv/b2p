@@ -7,34 +7,34 @@
     nixpkgs.url = "github:nixos/nixpkgs/nixos-24.05";
   };
 
-  outputs = { self , nixpkgs , ... }: let
-    # system should match the system you are running on
-    system = "x86_64-linux";
-  in {
-    devShells."${system}".default = let
+  outputs = { self, nixpkgs, ... }:
+    let
+      system = "x86_64-linux";
       pkgs = import nixpkgs {
         inherit system;
       };
-    in pkgs.mkShell {
-      packages = with pkgs; [
-        # display banner
-        figlet
 
-        # main.py
+      # Define a common set of dependencies, using 'with pkgs' to simplify
+      dependencies = with pkgs; [
+        figlet
+        php
         python312
         python312Packages.tqdm
-        python312Packages.pyyaml
-
-        # dir2cast
-        php
-
-        # BBDown
-        (callPackage ./bbdown.nix { ffmpeg = ffmpeg_7-headless; })
+        python312Packages.pyaml
       ];
+    in {
+      packages = {
+        default = pkgs.mkShell {
+          buildInputs = dependencies;
+        };
+      };
 
-      shellHook = ''
-        figlet b2p!
-      '';
+      # Define a Docker image
+      dockerImage = pkgs.dockerTools.buildImage {
+        name = "b2p";
+        tag = "latest";
+        contents = dependencies;
+      };
     };
-  };
 }
+        # (callPackage ./bbdown.nix { ffmpeg = ffmpeg_7-headless; })

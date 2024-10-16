@@ -4,6 +4,15 @@
 
 Bilibili to Podcast
 
+使用方法
+- 安装 ffmpeg、[[https://github.com/nilaoda/BBDown][BBDown]]
+
+#+begin_src bash
+  DEBUG=true python main.py config/Warma.yaml
+  cd output
+  rm -rf ./*/temp/ && php -S 0.0.0.0:12345
+#+end_src
+
 其他链接
 - [[https://www.ruanyifeng.com/blog/2016/07/yaml.html][YAML 语言教程]]
 - [[https://nodeca.github.io/js-yaml/][YAML 转 Json]]

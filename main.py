@@ -7,7 +7,7 @@ import subprocess
 import logging
 from tqdm import tqdm
 
-DEBUG_ENABLED = True if os.getenv('ACTIONS_RUNNER_DEBUG') == 'true' else False
+DEBUG_ENABLED = True if os.getenv('DEBUG') == 'true' else False
 
 ################################################################
 # Logging

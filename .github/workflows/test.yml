@@ -14,6 +14,8 @@ jobs:
     steps:
       - name: Checkout repo
         uses: actions/checkout@v4
+        with:
+          submodules: recursive
       - name: Install dependencies
         run: sudo apt-get install -y wget curl php
       - name: Setup Python

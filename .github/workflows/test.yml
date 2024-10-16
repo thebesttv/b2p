@@ -36,3 +36,11 @@ jobs:
           python --version
           ffmpeg -version | head -n1
           BBDown --help --version
+      - name: Test each config
+        run: |
+          for file in config/*.yaml; do
+            echo "================================================================"
+            echo "= $file"
+            echo "================================================================"
+            python main.py "$file"
+          done

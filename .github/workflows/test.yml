@@ -40,6 +40,13 @@ jobs:
           python --version
           ffmpeg -version | head -n1
           BBDown --help --version
+      - name: Set DEBUG environment variable
+        run: |
+          if [[ "${{ runner.debug }}" == "1" ]]; then
+            echo "DEBUG=true" >> $GITHUB_ENV
+          else
+            echo "DEBUG=false" >> $GITHUB_ENV
+          fi
       - name: Test each config
         run: |
           for file in config/*.yaml; do

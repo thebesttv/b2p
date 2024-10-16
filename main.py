@@ -7,6 +7,8 @@ import subprocess
 import logging
 from tqdm import tqdm
 
+DEBUG_ENABLED = True if os.getenv('ACTIONS_RUNNER_DEBUG') == 'true' else False
+
 ################################################################
 # Logging
 ################################################################
@@ -87,7 +89,9 @@ def make_podcast(config_path, output_dir):
             '--select-page', str(page),
             bvid
         ]
-        result = subprocess.run(cmd, cwd=output_dir, capture_output=True)
+        result = subprocess.run(cmd, cwd=output_dir,
+                                # 如果 debug，就不捕获输出，直接输出到终端
+                                capture_output=not DEBUG_ENABLED)
         if result.returncode != 0:
             logger.error("Return code is not 0!")
             logger.error(result.stdout.decode())

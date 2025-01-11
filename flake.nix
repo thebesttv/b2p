@@ -16,6 +16,9 @@
       pkgs = import nixpkgs {
         inherit system;
       };
+      bbdown = with pkgs; (
+        callPackage ./bbdown.nix { ffmpeg = ffmpeg_7-headless; }
+      );
     in pkgs.mkShell {
       packages = with pkgs; [
         # display banner
@@ -29,8 +32,7 @@
         # dir2cast
         php
 
-        # BBDown
-        (callPackage ./bbdown.nix { ffmpeg = ffmpeg_7-headless; })
+        bbdown
       ];
 
       shellHook = ''

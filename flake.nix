@@ -4,7 +4,8 @@
   description = "b2p";
 
   inputs = {
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-24.05";
+    # 需要使用 ffmpeg 7.0.1 或 7.0.2，否则生成的 sha256 不匹配
+    nixpkgs.url = "github:NixOS/nixpkgs/05bbf675397d5366259409139039af8077d695ce";
   };
 
   outputs = { self , nixpkgs , ... }: let
